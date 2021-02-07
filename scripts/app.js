@@ -6,6 +6,7 @@ const updateMsg = document.querySelector(".update-msg")
 const rooms =document.querySelector(".chat-rooms")
 const roomName = document.querySelector(".chatroom-name")
 
+
 //add a new chat
 newChatForm.addEventListener("submit", e =>{
     e.preventDefault();
@@ -14,6 +15,21 @@ newChatForm.addEventListener("submit", e =>{
         .then(()=> newChatForm.reset())
         .catch(err=>console.log(err))
 })
+
+
+//deleting a chat
+chatlist.addEventListener("click", e=>{
+    if(e.target.classList.contains("delete")){
+        const x= e.target.parentElement.parentElement.innerText;
+        console.log(x)
+           
+        chatroom.deletechat(x)
+        console.log("back")
+        //setTimeout(chatroom.getChats(chats => chatUI.render(chats)),2000)
+    }
+    
+})
+
 
 //updating the name
 newNameForm.addEventListener("submit",e=>{
@@ -28,7 +44,6 @@ newNameForm.addEventListener("submit",e=>{
 })
 
 //updating the rooms
-
 rooms.addEventListener("click", e=>{
     if(e.target.tagName === "BUTTON"){
         chatUI.clear();

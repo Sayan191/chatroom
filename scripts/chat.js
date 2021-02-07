@@ -9,6 +9,7 @@ class Chatroom{
     async addChat(message){
         //format a chat object
         const now = new Date();
+        console.log(firebase.firestore.Timestamp.fromDate(now))
         const chat = {
             message:message,
             room:this.room,
@@ -44,5 +45,25 @@ class Chatroom{
             this.rset()
         }
     }
+    deletechat(x){
+        this.chats.where("room", "==" , this.room).get().then((querySnapshot) => {
+            var str = "";
+            querySnapshot.forEach((doc) => {
+                str = doc.data().username+": "+doc.data().message+"  ";
+                const when = dateFns.distanceInWordsToNow(
+                    doc.data().created_at.toDate(),
+                    {addSuffix: true}
+                )
+                str+=when;
+                if (x == str){
+                    doc.ref.delete();
+                }
+            })
+        })      
+    }
+    
 }
+
+
+
 

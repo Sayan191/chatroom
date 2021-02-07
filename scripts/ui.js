@@ -18,9 +18,11 @@ class ChatUI{
         )
         const html= `
         <li class="list-group-item">
-            <span class="username">${data.username}:</span>
+            <span class="username">${data.username}:   </span>
             <span class="message">${data.message}</span>
-            <div class="time">${when}</div>
+            <span  style="text-align:right;font-size:1.5em"><ion-icon name="trash-outline" class="delete"></ion-icon></span>
+            <span class="time">${when}</span>
+
         </li>`;
 
         this.list.innerHTML += html

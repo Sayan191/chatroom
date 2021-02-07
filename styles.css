@@ -59,7 +59,15 @@ input:focus{
 }
 
 .chat-window{
+    max-height: 400px;
     border-color: #8d00a0;
     border-radius: 5px;
     border-style:solid;
+    overflow: auto;
+}
+
+.delete{
+    cursor: pointer;
+    align-items: flex-end;
+    text-align: end;    
 }
